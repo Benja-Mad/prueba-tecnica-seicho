@@ -18,7 +18,7 @@ enum Seniority {
     senior
 }
 
-model Developer {
+model Worker {
   id      Int      @id @default(autoincrement())
   name    String
   role    Role
