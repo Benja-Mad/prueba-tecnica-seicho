@@ -23,4 +23,14 @@ model Worker {
   name    String
   role    Role
   seniority Seniority
+  projects  Project[]
+}
+
+model Project {
+  id      Int      @id @default(autoincrement())
+  name    String
+  client  String
+  start_date   DateTime
+  finish_date  DateTime
+  workers      Worker[]
 }
