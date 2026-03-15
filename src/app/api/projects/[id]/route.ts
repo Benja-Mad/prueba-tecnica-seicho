@@ -7,12 +7,9 @@ export async function GET(
 ) {
     try {
         const { id } = await params
-
         const project = await prisma.project.findUnique({
             where: { id: Number(id) },
-            include: {
-                workers: true
-            }
+            include: { workers: true }
         })
 
         if (!project) {
@@ -50,9 +47,7 @@ export async function PUT(
                     set: body.workerIds.map((id: number) => ({ id }))
                 } : undefined
             },
-            include: {
-                workers: true
-            }
+            include: { workers: true }
         })
 
         return NextResponse.json(project)
@@ -70,11 +65,7 @@ export async function DELETE(
 ) {
     try {
         const { id } = await params
-
-        await prisma.project.delete({
-            where: { id: Number(id) }
-        })
-
+        await prisma.project.delete({ where: { id: Number(id) } })
         return NextResponse.json({ message: 'Proyecto eliminado' })
     } catch (error) {
         return NextResponse.json(
